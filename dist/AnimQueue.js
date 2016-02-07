@@ -133,7 +133,7 @@ var _qid = -1,
             };
 
         _setFramerate(args.framerate || 60);
-        _setRemoveDelay(args.delay || 0);
+        _setRemoveDelay(args.removeDelay || 0);
         _setInterval();
 
         this._qid = ++_qid;
