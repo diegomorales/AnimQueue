@@ -3,6 +3,7 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     eslint = require('gulp-eslint'),
     umd = require('gulp-umd'),
+    strip = require('gulp-strip-comments'),
     path = require('path');
 
 var devPath = 'src/',
@@ -22,6 +23,7 @@ gulp.task('js', function(){
                 return path.basename(file.path, path.extname(file.path));
             }
         }))
+        .pipe(strip())
         .pipe(gulp.dest(distPath))
         .pipe(uglify())
         .pipe(rename({

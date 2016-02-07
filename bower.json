@@ -1,17 +1,17 @@
 {
   "name": "animQueue",
-  "description": "A super tiny modal plugin.",
+  "description": "",
   "main": [
-    "./dist/animQueue.js"
+    "./dist/AnimQueue.js"
   ],
   "authors": [
     "Diego Morales <diego.morales@gmx.net>"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/diegomorales/mini-modal",
+  "homepage": "https://github.com/diegomorales/AnimQueue",
   "repository": {
     "type": "git",
-    "url": "https://github.com/diegomorales/mini-modal.git"
+    "url": "https://github.com/diegomorales/AnimQueue.git"
   },
   "moduleType": [
     "globals"
@@ -26,6 +26,7 @@
     "browser",
     "plugin",
     "animation",
-    "helper"
+    "helper",
+    "requestAnimationFrame"
   ]
 }

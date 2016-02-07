@@ -1,21 +1,22 @@
 {
-  "name": "animQueue",
+  "name": "AnimQueue",
   "version": "0.0.1",
-  "description": "A super tiny modal plugin.",
+  "description": "",
   "author": "Diego Morales <diego.morales@gmx.net>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/diegomorales/mini-modal.git"
+    "url": "https://github.com/diegomorales/AnimQueue.git"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-uglify": "^1.5.1",
+    "gulp-strip-comments": "^2.0.0",
     "gulp-eslint": "^1.1.1",
     "gulp-umd": "^0.2.0",
     "gulp-rename": "^1.0.0",
     "path": "*"
   },
-  "main": "./dist/animQueue.js",
+  "main": "./dist/AnimQueue.js",
   "dependencies": {},
   "scripts": {
     "prestart": "npm install",
