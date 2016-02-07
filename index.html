@@ -23,8 +23,6 @@
             <button id="btn-60">set framerate: 60</button>
         </p>
 
-        <p id="time"></p>
-
         <div id="square"></div>
 
         <script src="dist/animQueue.js"></script>
@@ -33,14 +31,13 @@
             // It is possible to create multiple queues with different framerates.
             var queue = new AnimQueue({
                         framerate: 30,
-                        removeDelay: 1000
+                        delay: 1000
                     }),
                 btn = document.getElementById('btn-1'),
                 btn2 = document.getElementById('btn-2'),
                 btn10 = document.getElementById('btn-10'),
                 btn60 = document.getElementById('btn-60'),
                 square = document.getElementById('square'),
-                time = document.getElementById('time'),
                 rotation = 0,
                 rotationStep = 1,
                 date,
@@ -61,10 +58,6 @@
 
                     rotation += rotationStep;
                     square.style.transform = 'rotate(' + rotation + 'deg)';
-
-                    date = new Date();
-
-                    time.innerHTML = date.getSeconds() + '.' + date.getMilliseconds();
                 },
 
                 // an animation function
@@ -105,13 +98,12 @@
             });
 
             btn10.addEventListener('click', function(){
-                queue.setFramerate(10);
+                queue.framerate = 10;
             });
 
             btn60.addEventListener('click', function(){
-                queue.setFramerate(60);
+                queue.framerate = 60;
             });
-
         </script>
     </body>
 </html>

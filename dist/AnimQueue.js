@@ -22,7 +22,7 @@ var _qid = -1,
             _delta,
             _then = Date.now(),
             _fps,
-            _removeDelay = args.removeDelay || 0,
+            _removeDelay,
             _interval,
             _isAnimating = false,
 
@@ -133,23 +133,35 @@ var _qid = -1,
             };
 
         _setFramerate(args.framerate || 60);
+        _setRemoveDelay(args.delay || 0);
         _setInterval();
 
         this._qid = ++_qid;
         this.addToQueue = _addToQueue;
         this.removeFromQueue = _removeFromQueue;
-        this.setFramerate = _setFramerate;
-        this.setRemoveDelay = _setRemoveDelay;
-        this.isAnimating = function() {
-            return _isAnimating;
-        };
 
-        Object.defineProperty(this, 'framerate', {
-            get: function() {
-                return _fps;
+        Object.defineProperties(this, {
+            'framerate': {
+                get: function() {
+                    return _fps;
+                },
+
+                set: _setFramerate
             },
 
-            set: _setFramerate
+            'delay': {
+                get: function() {
+                    return _removeDelay;
+                },
+
+                set: _setRemoveDelay
+            },
+
+            'isAnimating': {
+                get: function() {
+                    return _isAnimating;
+                }
+            }
         });
     };
 
