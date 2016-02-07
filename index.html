@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+
+        <style>
+            #square {
+                display: block;
+                margin: 0 auto;
+                width: 200px;
+                height: 200px;
+                background-color: powderblue;
+            }
+        </style>
+    </head>
+    <body>
+
+        <p>
+            <button id="btn-1">toggle rotate <br>(remove with delay)</button>
+            <button id="btn-2">toggle size <br>(remove without delay)</button>
+            <button id="btn-10">set framerate: 10</button>
+            <button id="btn-60">set framerate: 60</button>
+        </p>
+
+        <p id="time"></p>
+
+        <div id="square"></div>
+
+        <script src="dist/animQueue.js"></script>
+        <script>
+
+            // It is possible to create multiple queues with different framerates.
+            var queue = new AnimQueue({
+                        framerate: 30,
+                        removeDelay: 1000
+                    }),
+                btn = document.getElementById('btn-1'),
+                btn2 = document.getElementById('btn-2'),
+                btn10 = document.getElementById('btn-10'),
+                btn60 = document.getElementById('btn-60'),
+                square = document.getElementById('square'),
+                time = document.getElementById('time'),
+                rotation = 0,
+                rotationStep = 1,
+                date,
+                width = 200,
+                widthStep = 5,
+                toggleAnimRotate = false,
+                toggleAnimSize = false,
+
+                // an animation function
+                animRotate = function(){
+                    if(rotation == 360){
+                        rotationStep = -1;
+                    }
+
+                    if(rotation == 0){
+                        rotationStep = 1;
+                    }
+
+                    rotation += rotationStep;
+                    square.style.transform = 'rotate(' + rotation + 'deg)';
+
+                    date = new Date();
+
+                    time.innerHTML = date.getSeconds() + '.' + date.getMilliseconds();
+                },
+
+                // an animation function
+                animSize = function(){
+                    if(width > 300){
+                        widthStep = -5;
+                    }
+
+                    if(width < 100){
+                        widthStep = 5;
+                    }
+
+                    width += widthStep;
+
+                    square.style.width = width + 'px';
+                };
+
+            btn.addEventListener('click', function(){
+                if(toggleAnimRotate){
+
+                    // remove animation function with delay
+                    queue.removeFromQueue(animRotate, true);
+                }else{
+                    queue.addToQueue(animRotate);
+                }
+
+                toggleAnimRotate = !toggleAnimRotate;
+            });
+
+            btn2.addEventListener('click', function(){
+                if(toggleAnimSize){
+                    queue.removeFromQueue(animSize);
+                }else{
+                    queue.addToQueue(animSize);
+                }
+
+                toggleAnimSize = !toggleAnimSize;
+            });
+
+            btn10.addEventListener('click', function(){
+                queue.setFramerate(10);
+            });
+
+            btn60.addEventListener('click', function(){
+                queue.setFramerate(60);
+            });
+
+        </script>
+    </body>
+</html>
