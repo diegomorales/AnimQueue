@@ -1,6 +1,6 @@
 {
-  "name": "animQueue",
-  "description": "",
+  "name": "animqueue",
+  "description": "A helper for queueing animation functions.",
   "main": [
     "./dist/AnimQueue.js"
   ],

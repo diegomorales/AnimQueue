@@ -1,7 +1,7 @@
 {
   "name": "animqueue",
   "version": "0.1.2",
-  "description": "",
+  "description": "A helper for queueing animation functions.",
   "author": "Diego Morales <diego.morales@gmx.net>",
   "repository": {
     "type": "git",
