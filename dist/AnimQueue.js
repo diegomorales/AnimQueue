@@ -132,10 +132,6 @@ var _qid = -1,
                 }
             };
 
-        _setFramerate(args.framerate || 60);
-        _setRemoveDelay(args.removeDelay || 0);
-        _setInterval();
-
         this._qid = ++_qid;
         this.addToQueue = _addToQueue;
         this.removeFromQueue = _removeFromQueue;
@@ -149,7 +145,7 @@ var _qid = -1,
                 set: _setFramerate
             },
 
-            'delay': {
+            'removeDelay': {
                 get: function() {
                     return _removeDelay;
                 },
@@ -163,6 +159,11 @@ var _qid = -1,
                 }
             }
         });
+
+        this.framerate = args.framerate || 60;
+        this.removeDelay = args.removeDelay || 0;
+
+        _setInterval();
     };
 
 return AnimQueue;
